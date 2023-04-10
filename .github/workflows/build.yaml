@@ -28,8 +28,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-3
 
+      - name: Login to ECR
+        run: |
+          which aws
+
       - name: Login to Amazon ECR
-        id: AWS
+        id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Get image tag(verion)
